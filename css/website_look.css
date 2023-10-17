@@ -1,0 +1,50 @@
+body {
+  background-color: lightslategray;
+  color:lightgoldenrodyellow
+  
+}
+
+h1 {
+  color: lightcoral;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h2 {
+    color: greenyellow;
+    text-align: center;
+  }
+
+section {
+    width: 20%;
+    margin-right: 2%;
+    display: inline-block;
+    float: right;
+}
+
+body {
+    direction: rtl;
+    background: lightsteelblue;
+    margin: 5%;
+    font-size: 150%;
+    font-family: Arial, "Times New Roman", serif;
+}
+
+footer{
+    width: 10%;
+   
+    display: inline-block;
+
+}
+
+.good{
+    background-color: mediumvioletred;
+    width:200px;
+    border: 15px solid pink;
+    padding: 15px;
+    margin: 15px;
+}
+
+a:hover {
+    color: paleturquoise;
+  }
