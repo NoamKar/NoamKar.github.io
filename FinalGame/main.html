@@ -1,0 +1,99 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Fantasy Forest</title>
+
+
+</head>
+
+
+<body onload="OpenGate2(); OpenGate3(); OpenGate4();">
+
+    <div id="audio-player">
+        <audio controls id="background-audio">
+            <source src="audio/BackgroundMusicShort.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div class="overlay-containerTop">
+        <h1>Fantasy Forest</h1>
+    </div>
+
+
+    <div class="overlay-container1" id="Gate1">
+        <a href="gate1.html">
+            <img src="imgs/Gate1.png" alt="Overlay Image">
+        </a>
+    </div>
+
+    <div class="overlay-container2" id="Gate2">
+        <a href="gate2.html">
+            <img src="imgs/Gate2.png" alt="Overlay Image">
+        </a>
+    </div>
+
+    <div class="overlay-container3" id="Gate3">
+        <a href="gate3.html">
+            <img src="imgs/Gate3.png" alt="Overlay Image">
+        </a>
+    </div>
+
+    <div class="overlay-container4" id="Gate4">
+        <a href="https://omerpolicker.github.io/DorothyMain.html">
+            <img src="imgs/Gate4.png" alt="Overlay Image">
+        </a>
+    </div>
+
+    <script>
+
+        function OpenGate2() {
+
+            var ButterflyCollected = sessionStorage.getItem("Butterfly");
+
+            if (ButterflyCollected == "Completed") {
+                document.getElementById("Gate2").style.display = "block";
+            }
+            else {
+                document.getElementById("Gate2").style.display = "none";
+            }
+            console.log("Open Gate 2  and Collected:" + ButterflyCollected + "Butterflies");
+        }
+
+        function OpenGate3() {
+
+            var FlowersCollected = sessionStorage.getItem("Flower");
+
+            if (FlowersCollected == "Completed") {
+                document.getElementById("Gate3").style.display = "block";
+            }
+            else {
+                document.getElementById("Gate3").style.display = "none";
+            }
+            console.log("Open Gate 3  and Collected:" + FlowersCollected + "Flowers");
+
+        }
+
+        function OpenGate4() {
+
+            var PotionsCollected = sessionStorage.getItem("Potion");
+
+            if (PotionsCollected == "Completed") {
+                document.getElementById("Gate4").style.display = "block";
+                sessionStorage.setItem("Curiosity", "Added");
+            }
+            else {
+                document.getElementById("Gate4").style.display = "none";
+            }
+            console.log("Open Gate 4  and Collected:" + PotionsCollected + "Potions");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

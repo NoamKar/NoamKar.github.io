@@ -1,0 +1,185 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesGate3.css">
+    <title>Fantasy Island</title>
+</head>
+
+
+<body onload="FinishGate3()">
+    <div class="overlay-containerTop">
+        <h1>
+            Colmer's Hutt
+        </h1>
+    </div>
+
+
+    <div id="inventory">
+        <h2>Inventory:</h2>
+
+        <div class="item-container" id="butterfliesItem">
+            <img src="imgs/Buttrfly.png" alt="Butterflies" width="50px">
+            <span class="counter" id="butterfliesCounter">0</span>
+        </div>
+
+        <div class="item-container" id="potionsItem">
+            <img src="imgs/Potion.png" alt="Potions" width="50px">
+            <span class="counter" id="potionsCounter">0</span>
+        </div>
+
+        <div class="item-container" id="lylasFlowersItem">
+            <img src="imgs/LylasFlower.png" alt="Lyla's Flowers" width="50px">
+            <span class="counter" id="lylasFlowersCounter">0</span>
+        </div>
+
+    </div>
+
+    <div id=CollectiblePotions>
+        <div id="CollectiblePotion1">
+            <img src="imgs/Potion.png" alt="Butterflies" width="100px" onclick="GetPotion1()">
+        </div>
+        <div id="CollectiblePotion2">
+            <img src="imgs/Potion.png" alt="Butterflies" width="100px" onclick="GetPotion2()">
+        </div>
+        <div id="CollectiblePotion3">
+            <img src="imgs/Potion.png" alt="Butterflies" width="100px" onclick="GetPotion3()">
+        </div>
+    </div>
+
+
+    <button onclick="resetItems()">reset</button>
+    </div>
+
+    <dive id="GivePotions">
+        <a href="main.html" onclick="FinishGate3()" id="GivePotionsLink"> Give Colmer potions</a>
+    </dive>
+
+    <div class="dialog-container">
+        <p class="dialog visible Other">And who might you be ?</p>
+        <p class="dialog Dorothy">I was swooped away by a tornado, I'm trying to get back home, Soren and Lenny said you
+            can help
+            me</p>
+        <p class="dialog Other">that depends, have you completed their Mystery Missions ?</p>
+        <p class="dialog Dorothy">Yes, I did</p>
+        <p class="dialog Other">Hahahahah, you did, well I persume you are very kin to leave ?</p>
+        <p class="dialog Dorothy">Well im trying to get back home</p>
+        <p class="dialog Other">And in the process you have helped people and did as asked only to discover the secret
+            way out</p>
+        <p class="dialog Dorothy">I was hoping for that, yes.</p>
+        <p class="dialog Other">Then youre in LUCK ! because after you complete my mission you will prove you have
+            acquired a special talent - its called Curiosity ! </p>
+        <p class="dialog Other">Help me collect my 3 potions tat flew away from my levitation serum, and the mission
+            will be complete ! </p>
+        <p class="dialog Dorothy">Then I can leave ?</p>
+        <p class="dialog Other">Yes, the Gate only opens for curious and kind people, Best of luck </p>
+        <p class="dialog Dorothy">Wonderful !!! </p>
+    </div>
+
+    <button id="nextButton">Next</button>
+
+    <div>
+        <p id="DorothySprite"></p>
+    </div>
+
+    <div>
+        <p id="ColmerSprite"></p>
+    </div>
+
+    <script>
+        let butterfliesCounter = 0;
+        let ButCounter = document.getElementById("butterfliesCounter");
+        let potionsCounter = 0;
+        let PotCounter = document.getElementById("potionsCounter");
+        let lylasFlowersCounter = 0
+        let FlowerCounter = document.getElementById("lylasFlowersCounter");
+
+        function GetPotion1() {
+            potionsCounter++;
+            PotCounter.textContent = potionsCounter;
+            document.getElementById("CollectiblePotion1").style.display = "none";
+            Console.console.log("Potion Added");
+
+        }
+
+        function GetPotion2() {
+            potionsCounter++;
+            PotCounter.textContent = potionsCounter;
+            document.getElementById("CollectiblePotion2").style.display = "none";
+            Console.console.log("Potion Added");
+        }
+
+        function GetPotion3() {
+            potionsCounter++;
+            PotCounter.textContent = potionsCounter;
+            document.getElementById("CollectiblePotion3").style.display = "none";
+            Console.console.log("Potion Added");
+
+        }
+        function resetItems() {
+            potionsCounter = 0;
+            PotCounter.textContent = potionsCounter;
+        }
+
+        function FinishGate3() {
+            if (potionsCounter == 3) {
+                sessionStorage.setItem("Potion", "Completed");
+                Console.console.log("Potions Completed");
+            }
+
+        }
+
+
+        let currentDialogIndex = 0;
+
+
+        function showNextDialog() {
+            const dialogs = document.querySelectorAll('.dialog');
+            if (currentDialogIndex < dialogs.length - 1) {
+
+                dialogs[currentDialogIndex].classList.remove('visible');
+
+                currentDialogIndex++;
+                dialogs[currentDialogIndex].classList.add('visible');
+            }
+        }
+
+
+        const firstDialog = document.querySelector('.dialog');
+        firstDialog.classList.add('visible');
+
+
+        document.getElementById('nextButton').addEventListener('click', showNextDialog);
+
+
+
+        const sprite = document.getElementById('DorothySprite');
+
+        let isWalking = false;
+
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                isWalking = true;
+                sprite.style.left = '50%'
+                sprite.style.animation = 'WalkingAnimation 1s steps(20) infinite';
+                sprite.style.backgroundImage = "url('imgs/DorothyWalking.png')";
+            }
+        });
+
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                isWalking = false;
+                sprite.style.animation = 'IdleAnimation 1s steps(16) infinite';
+                sprite.style.backgroundImage = "url('imgs/DorothyIdle.png')";
+
+            }
+        });
+
+    </script>
+</body>
+
+</html>

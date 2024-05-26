@@ -1,0 +1,56 @@
+body {
+
+    background-image: url('imgs/FantasyForest3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+
+    .overlay-container1 {
+        position: absolute;
+        top: 45%;
+        left: 43%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay-container2 {
+        position: absolute;
+        top: 23%;
+        left: 73%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay-container3 {
+        position: absolute;
+        top: 80%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay-container4 {
+        position: absolute;
+        top: 40%;
+        left: 15%;
+        transform: translate(-50%, -50%);
+    }
+
+    .overlay-containerTop {
+        position: absolute;
+        top: 15%;
+        left: 47%;
+        transform: translate(-50%, -50%);
+        font-size: 60px;
+        color: #00ff80;
+        -webkit-text-stroke: 2px black;
+
+    }
+
+    #audio-player {
+        position: relative;
+        top: 850px;
+    }
+
+
+
+}

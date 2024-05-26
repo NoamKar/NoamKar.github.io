@@ -1,0 +1,172 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesGate2.css">
+    <title>Fantasy Island</title>
+</head>
+
+
+<body onload="FinishGate2()">
+    <div class="overlay-containerTop">
+        <h1>
+            Lenny's House
+        </h1>
+    </div>
+
+
+    <div id="inventory">
+        <h2>Inventory:</h2>
+
+        <div class="item-container" id="butterfliesItem">
+            <img src="imgs/Buttrfly.png" alt="Butterflies" width="50px">
+            <span class="counter" id="butterfliesCounter">0</span>
+        </div>
+
+        <div class="item-container" id="potionsItem">
+            <img src="imgs/Potion.png" alt="Potions" width="50px">
+            <span class="counter" id="potionsCounter">0</span>
+        </div>
+
+        <div class="item-container" id="lylasFlowersItem">
+            <img src="imgs/LylasFlower.png" alt="Lyla's Flowers" width="50px">
+            <span class="counter" id="lylasFlowersCounter">0</span>
+        </div>
+
+    </div>
+
+    <div id=CollectibleFlowers>
+        <div id="CollectibleFlower1">
+            <img src="imgs/LylasFlower.png" alt="Flowers" width="100px" onclick="GetFlower1()">
+        </div>
+        <div id="CollectibleFlower2">
+            <img src="imgs/LylasFlower.png" alt="Flowers" width="100px" onclick="GetFlower2()">
+        </div>
+        <div id="CollectibleFlower3">
+            <img src="imgs/LylasFlower.png" alt="Flowers" width="100px" onclick="GetFlower3()">
+        </div>
+    </div>
+
+    <div id="GiveFlowers">
+        <a href="main.html" onclick="FinishGate2()" id="GiveFlowersLink"> give Lenny flowers</a>
+    </div>
+
+    <div class="dialog-container">
+        <p class="dialog visible Other">I sense you came to seek my help</p>
+        <p class="dialog Dorothy">Yes ! thats right !</p>
+        <p class="dialog Dorothy">I was swooped away by a tornado, I'm trying to get back home, Soren said you can help
+            me</p>
+        <p class="dialog Other">He tends to say many things, but on this matter I can do help !</p>
+        <p class="dialog Other"> If you help me to collect 3 Flowers, I can show you where Colmer lives. He has the 3rd
+            part of the Mystery Mission to aquire the special talent and open the Exit gate.</p>
+        <p class="dialog Dorothy">Sure Ill help</p>
+
+    </div>
+
+    <button id="nextButton">Next</button>
+
+    <div>
+        <p id="DorothySprite"></p>
+    </div>
+
+    <div>
+        <p id="LennySprite"></p>
+    </div>
+
+    <script>
+        let butterfliesCounter = 0;
+        let ButCounter = document.getElementById("butterfliesCounter");
+        let potionsCounter = 0;
+        let PotCounter = document.getElementById("potionsCounter");
+        let lylasFlowersCounter = 0
+        let FlowerCounter = document.getElementById("lylasFlowersCounter");
+
+        function GetFlower1() {
+            lylasFlowersCounter++;
+            FlowerCounter.textContent = lylasFlowersCounter;
+            document.getElementById("CollectibleFlower1").style.display = "none";
+            Console.console.log("Butterfly Added");
+
+        }
+
+        function GetFlower2() {
+            lylasFlowersCounter++;
+            FlowerCounter.textContent = lylasFlowersCounter;
+            document.getElementById("CollectibleFlower2").style.display = "none";
+            Console.console.log("Flower Added");
+        }
+
+        function GetFlower3() {
+            lylasFlowersCounter++;
+            FlowerCounter.textContent = lylasFlowersCounter;
+            document.getElementById("CollectibleFlower3").style.display = "none";
+            Console.console.log("Flower Added");
+
+        }
+        function resetItems() {
+            lylasFlowersCounter = 0;
+            FlowerCounter.textContent = lylasFlowersCounter;
+        }
+
+        function FinishGate2() {
+            if (lylasFlowersCounter == 3) {
+                sessionStorage.setItem("Flower", "Completed");
+                Console.console.log("Flower Completed");
+            }
+
+        }
+
+        let currentDialogIndex = 0;
+
+
+        function showNextDialog() {
+            const dialogs = document.querySelectorAll('.dialog');
+            if (currentDialogIndex < dialogs.length - 1) {
+
+                dialogs[currentDialogIndex].classList.remove('visible');
+
+                currentDialogIndex++;
+                dialogs[currentDialogIndex].classList.add('visible');
+            }
+        }
+
+
+        const firstDialog = document.querySelector('.dialog');
+        firstDialog.classList.add('visible');
+
+
+        document.getElementById('nextButton').addEventListener('click', showNextDialog);
+
+
+        const sprite = document.getElementById('DorothySprite');
+
+
+        let isWalking = false;
+
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                isWalking = true;
+                sprite.style.left = '50%'
+                sprite.style.animation = 'WalkingAnimation 1s steps(20) infinite';
+                sprite.style.backgroundImage = "url('imgs/DorothyWalking.png')";
+            }
+        });
+
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+                isWalking = false;
+                sprite.style.animation = 'IdleAnimation 1s steps(16) infinite';
+                sprite.style.backgroundImage = "url('imgs/DorothyIdle.png')";
+
+            }
+        });
+
+    </script>
+</body>
+
+
+</html>
