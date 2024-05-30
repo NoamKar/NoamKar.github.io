@@ -40,7 +40,7 @@ function attachTaskListeners() {
             likeCount++;
             document.getElementById('total').textContent = likeCount;
             if (likeCount >= 20) {
-                addItemToInventory('Heart', 'imgs/heart.png');
+                addItemToInventory('Heart', 'imgs/heart-n.png');
             }
         });
     }
